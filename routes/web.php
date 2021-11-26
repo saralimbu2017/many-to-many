@@ -32,3 +32,16 @@ Route::get('/read',function(){
         echo $role->name;
     }
 });
+
+//Route to delete data from database
+Route::get('/update',function(){
+    $user = User::findOrFail(1);
+    if($user->has('roles')){
+        foreach($user->roles as $role){
+            if($role->name = 'Admin') {
+                $role->name = "adminstrator";
+                $role->save();
+            }
+        }
+    }
+});
