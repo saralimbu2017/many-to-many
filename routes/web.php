@@ -18,8 +18,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/create',function(){
+//Route for insert operation
+Route::get('/insert',function(){
     $user = User::find(1);
     $role = new Role(['name'=>'Admin']);
     $user->roles()->save($role);
+});
+
+//Route to read data from database
+Route::get('/read',function(){
+    $user = User::findOrFail(1);
+    foreach($user->roles as $role){
+        echo $role->name;
+    }
 });
