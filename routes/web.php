@@ -45,3 +45,9 @@ Route::get('/update',function(){
         }
     }
 });
+
+//Route for delete operation
+Route::get('/delete',function(){
+    $user = User::findOrFail(1); 
+    $user->roles()->delete();
+});
