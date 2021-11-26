@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
+use App\Models\Role;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/create',function(){
+    $user = User::find(1);
+    $role = new Role(['name'=>'Admin']);
+    $user->roles()->save($role);
 });
